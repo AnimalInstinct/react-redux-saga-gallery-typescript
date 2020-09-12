@@ -1,12 +1,16 @@
 import { Dispatch as ReduxDispatch } from 'redux'
+import * as h from 'history'
 import * as users from './users'
+import * as albums from './gallery'
 
 export type Dispatch<TAction extends { type: string }> = (
   action: TAction
 ) => void
 
 export interface RootState {
-  posts: users.UsersState
+  router: h.History
+  users: users.UsersState
+  albums: albums.AlbumsState
 }
 
 export interface MiddlewareAPI<
@@ -31,4 +35,4 @@ export type Saga<
 
 export type RootMiddleware = IterableIterator<Saga>
 
-export type RootAction = users.UsersAction
+export type RootAction = users.UsersAction | albums.AlbumsAction

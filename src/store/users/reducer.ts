@@ -2,12 +2,14 @@ import { UsersAction } from './action'
 import { User } from './types'
 import { createReducer } from '../create'
 
-export type UsersState = {
+export interface UsersState {
   users: User[]
+  activeUser: User | null
 }
 
 const initState: UsersState = {
   users: [],
+  activeUser: null,
 }
 
 const { handle, reducer } = createReducer<UsersAction, UsersState>(initState)

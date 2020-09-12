@@ -8,4 +8,5 @@ export type UsersFetched = {
   type: 'USERS_FETCHED'
   users: User[]
 }
+
 export type UsersAction = FetchUsers | UsersFetched

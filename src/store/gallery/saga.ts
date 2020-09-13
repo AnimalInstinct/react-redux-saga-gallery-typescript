@@ -13,7 +13,6 @@ export function* saga(): RootMiddleware {
       }
 
       case 'FETCH_USER_ALBUMS': {
-        console.log('Saga')
         const albums: Album[] = await api.fetchUserAlbums(action.userId)
         return dispatch({
           type: 'USER_ALBUMS_FETCHED',

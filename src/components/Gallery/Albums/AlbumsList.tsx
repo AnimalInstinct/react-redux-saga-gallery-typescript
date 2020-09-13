@@ -7,6 +7,7 @@ type UserAlbumsProps = {
 }
 const AlbumsList: React.FC<UserAlbumsProps> = (props: UserAlbumsProps) => {
   const { albums } = props
+
   return (
     <Fragment>
       <div className="container">

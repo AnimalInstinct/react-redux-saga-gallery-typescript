@@ -27,6 +27,7 @@ export type FetchUserAlbums = {
 export type UserAlbumsFetched = {
   type: 'USER_ALBUMS_FETCHED'
   albums: Album[]
+  userId: number
 }
 
 export type FetchAlbumPhotos = {

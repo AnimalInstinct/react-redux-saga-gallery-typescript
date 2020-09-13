@@ -3,8 +3,7 @@ import React from 'react'
 
 import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router' // react-router v4/v5
-import UsersList from './components/UsersList'
-import UserAlbumsList from './components/UserAlbumsList'
+import Gallery from './components/Gallery'
 import './stylesheets/main.scss'
 import { history } from './store'
 
@@ -13,12 +12,7 @@ function App() {
     <div className="App">
       <ConnectedRouter history={history}>
         <Switch>
-          <Route
-            exact
-            path="/user/:userId/albums"
-            render={() => <UserAlbumsList />}
-          />
-          <Route exact path="/" render={() => <UsersList />} />
+          <Route path="/" render={() => <Gallery />} />
         </Switch>
       </ConnectedRouter>
     </div>

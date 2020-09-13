@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import { User } from '../../store/users'
-import UserItem from './UserItem'
+import { User } from '../../../store/gallery'
+import UsersItem from './UsersItem'
 
 type UsersListProps = {
   users: User[]
@@ -14,7 +14,7 @@ export default function UsersList(props: UsersListProps) {
         <h1 className="header">Users</h1>
         <div className="userslist">
           {users.map(user => (
-            <UserItem key={user.id} user={user} />
+            <UsersItem key={user.id} user={user} />
           ))}
         </div>
       </div>

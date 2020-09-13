@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
-import { Album } from '../../store/gallery'
-import UserAlbumsItem from './UserAlbumsItem'
+import { Album } from '../../../store/gallery'
+import UserAlbumsItem from './AlbumsItem'
 
 type UserAlbumsProps = {
   albums: Album[]
 }
-const UsersAlbumList: React.FC<UserAlbumsProps> = (props: UserAlbumsProps) => {
+const AlbumsList: React.FC<UserAlbumsProps> = (props: UserAlbumsProps) => {
   const { albums } = props
   return (
     <Fragment>
@@ -21,4 +21,4 @@ const UsersAlbumList: React.FC<UserAlbumsProps> = (props: UserAlbumsProps) => {
   )
 }
 
-export default UsersAlbumList
+export default AlbumsList

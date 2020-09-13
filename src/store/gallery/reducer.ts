@@ -1,35 +1,51 @@
-import { AlbumsAction } from './action'
-import { Album } from './types'
+import { GalleryAction } from './action'
+import { User, Album, Photo } from './types'
 import { createReducer } from '../create'
 
-export interface AlbumsState {
-  albums: Album[]
+export interface GalleryState {
+  users: User[]
 }
 
-const initState: AlbumsState = {
-  albums: [],
+const initState: GalleryState = {
+  users: [],
 }
 
-const { handle, reducer } = createReducer<AlbumsAction, AlbumsState>(initState)
+const { handle, reducer } = createReducer<GalleryAction, GalleryState>(
+  initState
+)
 
 export { reducer }
 
-handle('FETCH_USER_ALBUMS', (state, action) => {
+handle('FETCH_USERS', state => {
   return { ...state }
+})
+
+handle('USERS_FETCHED', (state, action) => {
+  return { ...state, users: action.users }
+})
+
+handle('FETCH_USER_ALBUMS', state => {
+  return state
 })
 
 handle('USER_ALBUMS_FETCHED', (state, action) => {
   return { ...state, albums: action.albums }
 })
 
-handle('FETCH_ALBUM_PHOTOS', (state, action) => {})
+handle('FETCH_ALBUM_PHOTOS', state => {
+  return state
+})
 
 handle('ALBUM_PHOTOS_FETCHED', (state, action) => {
-  const { albums } = { ...state }
-  const album = albums.find(album => album.id === action.albumId)
-  if (album) {
-    album.test = 'Hello'
-    album.photos = action.photos
-  }
-  return { ...state, albums }
+  // const albums = state.albums.map(album => {
+  //   if (album.id !== action.albumId) {
+  //     return album
+  //   }
+  //   album.photos = action.photos
+  //   return {
+  //     ...album,
+  //     ...action,
+  //   }
+  // })
+  // return { ...state, albums }
 })

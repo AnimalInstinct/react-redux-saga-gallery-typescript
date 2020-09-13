@@ -1,20 +1,19 @@
 import React, { Fragment, useEffect } from 'react'
 import { withRootState } from '../../store'
 import UserAlbumsList from './UserAlbumsList'
+import { RouteComponentProps, withRouter } from 'react-router'
 
-const UserAlbumsListContainer: React.FC = withRootState(
+type MatchParams = {
+  userId: number
+}
+
+const UserAlbumsListContainer: React.FC<RouteComponentProps> = withRootState(
   ({ albums, router }) => ({ albums: albums.albums, router: router }),
-  ({ dispatch, albums, router }) => {
-    const path = router.location.pathname
-    const userId = parseInt(path.substring(path.lastIndexOf('/') + 1))
+  ({ dispatch, albums, match }) => {
+    const { userId } = match.params as MatchParams
     useEffect(() => {
       dispatch({ type: 'FETCH_USER_ALBUMS', userId })
     }, [])
-    useEffect(() => {
-      albums.map(album => {
-        dispatch({ type: 'FETCH_ALBUM_PHOTOS', albumId:album.id })
-      })
-    }, [albums])
     return (
       <Fragment>
         <UserAlbumsList albums={albums} />
@@ -23,4 +22,4 @@ const UserAlbumsListContainer: React.FC = withRootState(
   }
 )
 
-export default UserAlbumsListContainer
+export default withRouter(UserAlbumsListContainer)

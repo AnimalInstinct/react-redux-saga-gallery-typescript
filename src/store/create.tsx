@@ -19,7 +19,7 @@ export function createStore<TState, TAction extends Act>(
   const store = createRedux<TState, TAction, {}, {}>(
     reducer,
     composeWithDevTools({
-      name: `apply(${window.location.hostname}) ${name}`,
+      name: `apply(${window.location.hostname}) Sabai - ${name}`,
     })(applyMiddleware(saga))
   )
 
@@ -103,6 +103,7 @@ export function createSaga<
       await handler(action, dispatch, state)
       return
     }
+
     await handler(action, dispatch)
   }
 

@@ -8,6 +8,7 @@
     margin: 0.5em;
     opacity: 0.7;
     flex-direction: row;
+    border-radius: 0;
     &:hover {
       opacity: 1;
     }
@@ -15,7 +16,12 @@
     }
     &__info {
       padding-top: 0.5em;
-      text-align: center;
+      text-align: left;
+      font-size: 0.8em;
+    }
+    &__counter {
+      font-size: 0.8em;
+      padding-bottom: 0.3em;
     }
   }
 }

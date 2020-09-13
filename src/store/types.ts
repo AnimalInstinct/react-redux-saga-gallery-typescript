@@ -1,7 +1,6 @@
 import { Dispatch as ReduxDispatch } from 'redux'
 import * as h from 'history'
-import * as users from './users'
-import * as albums from './gallery'
+import * as gallery from './gallery'
 
 export type Dispatch<TAction extends { type: string }> = (
   action: TAction
@@ -9,8 +8,7 @@ export type Dispatch<TAction extends { type: string }> = (
 
 export interface RootState {
   router: h.History
-  users: users.UsersState
-  albums: albums.AlbumsState
+  gallery: gallery.GalleryState
 }
 
 export interface MiddlewareAPI<
@@ -35,4 +33,4 @@ export type Saga<
 
 export type RootMiddleware = IterableIterator<Saga>
 
-export type RootAction = users.UsersAction | albums.AlbumsAction
+export type RootAction = gallery.GalleryAction

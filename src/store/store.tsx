@@ -6,14 +6,12 @@ import { RootState, Dispatch, RootAction } from './types'
 import { connect } from 'react-redux'
 
 import * as h from 'history'
-import * as users from './users'
-import * as albums from './gallery'
+import * as gallery from './gallery'
 
 const rootReducer = (history: h.History) =>
   combineReducers<RootState>({
     router: connectRouter(history),
-    users: users.reducer,
-    albums: albums.reducer,
+    gallery: gallery.reducer,
   } as any)
 
 export const history = h.createBrowserHistory()
@@ -22,9 +20,7 @@ function flatMap<TIn, TOut>(arr: TIn[], f: (i: TIn) => TOut[]): TOut[] {
   return arr.reduce((x: TOut[], y: TIn) => [...x, ...f(y)], [])
 }
 
-const asyncMiddlewares = flatMap([users.saga(), albums.saga()], it =>
-  Array.from(it)
-)
+const asyncMiddlewares = flatMap([gallery.saga()], it => Array.from(it))
 
 export const store = createAppStore()
 

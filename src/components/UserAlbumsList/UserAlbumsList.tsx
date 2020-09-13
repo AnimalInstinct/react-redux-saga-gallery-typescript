@@ -5,8 +5,7 @@ import UserAlbumsItem from './UserAlbumsItem'
 type UserAlbumsProps = {
   albums: Album[]
 }
-
-export default function UsersList(props: UserAlbumsProps) {
+const UsersAlbumList: React.FC<UserAlbumsProps> = (props: UserAlbumsProps) => {
   const { albums } = props
   return (
     <Fragment>
@@ -21,3 +20,5 @@ export default function UsersList(props: UserAlbumsProps) {
     </Fragment>
   )
 }
+
+export default UsersAlbumList

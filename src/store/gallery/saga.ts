@@ -1,12 +1,17 @@
 import { RootMiddleware } from '..'
-import { AlbumsAction } from '.'
+import { GalleryAction } from '.'
 import * as api from '../../api'
-import { Album, Photo } from '.'
+import { User, Album, Photo } from '.'
 
 export function* saga(): RootMiddleware {
-  yield ({ dispatch }) => next => async (action: AlbumsAction) => {
+  yield ({ dispatch }) => next => async (action: GalleryAction) => {
     next(action)
     switch (action.type) {
+      case 'FETCH_USERS': {
+        const users: User[] = await api.fetchUsers()
+        return dispatch({ type: 'USERS_FETCHED', users })
+      }
+
       case 'FETCH_USER_ALBUMS': {
         const albums: Album[] = await api.fetchUserAlbums(action.userId)
         return dispatch({ type: 'USER_ALBUMS_FETCHED', albums })

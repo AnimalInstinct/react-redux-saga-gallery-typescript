@@ -1,4 +1,23 @@
-import { Album, Photo } from './types'
+import { User, Album, Photo } from './types'
+
+export type FetchUsers = {
+  type: 'FETCH_USERS'
+}
+
+export type UsersFetched = {
+  type: 'USERS_FETCHED'
+  users: User[]
+}
+
+export type FetchUser = {
+  type: 'FETCH_USER'
+  userId: number
+}
+
+export type UserFetched = {
+  type: 'USER_FETCHED'
+  users: User
+}
 
 export type FetchUserAlbums = {
   type: 'FETCH_USER_ALBUMS'
@@ -21,7 +40,9 @@ export type AlbumPhotosFetched = {
   albumId: number
 }
 
-export type AlbumsAction =
+export type GalleryAction =
+  | FetchUsers
+  | UsersFetched
   | FetchUserAlbums
   | UserAlbumsFetched
   | FetchAlbumPhotos

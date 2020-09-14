@@ -63,5 +63,5 @@ handle('ALBUM_PHOTOS_FETCHED', (state, action) => {
       ...action,
     }
   })
-  return { ...state, albums }
+  return { ...state, albums, photos: action.photos }
 })

@@ -2,10 +2,6 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
-/// Event wrapper
-/// @author Harry Roberts
-/// @param {Bool} $self [false] - Whether or not to include current selector
-/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
 @mixin on-event($self: false) {
   @if $self {
     &,
@@ -23,12 +19,34 @@
   }
 }
 
-/// Make a context based selector a little more friendly
-/// @author Hugo Giraudel
-/// @param {String} $context
 @mixin when-inside($context) {
   #{$context} & {
     @content;
   }
 }
 
+@mixin respond($breakpoint) {
+  @if $breakpoint==tablet {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==mobile {
+    @media only screen and (max-width: 480px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==smallscreen {
+    @media only screen and (min-width: 720px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint==bigscreen {
+    @media only screen and (min-width: 1080px) {
+      @content;
+    }
+  }
+}

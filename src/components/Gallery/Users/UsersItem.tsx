@@ -9,10 +9,6 @@ type UsersItemProps = {
 
 const UserItem: React.FC<UsersItemProps> = (props: UsersItemProps) => {
   const { user } = props
-  console.log('User Item')
-  // useEffect(() => {
-  //   dispatch({ type: 'FETCH_USER_ALBUMS', userId: user.id })
-  // }, [])
   return (
     <div className="userslist__item card">
       <NavLink to={`/user/${user.id}/albums`}>

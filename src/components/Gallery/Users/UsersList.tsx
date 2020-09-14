@@ -11,7 +11,8 @@ export default function UsersList(props: UsersListProps) {
   return (
     <Fragment>
       <div className="container">
-        <h1 className="header">Users</h1>
+        <h1 className="header">Users galleries</h1>
+        <h1 className="subheader">Choose user to proceed</h1>
         <div className="userslist">
           {users.map(user => (
             <UsersItem key={user.id} user={user} />

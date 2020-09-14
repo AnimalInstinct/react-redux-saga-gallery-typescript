@@ -21,9 +21,11 @@ const AlbumsItem: React.FC<AlbumsItemProps> = withRootState(
             <div className="albums__item__pic card__inner__image">
               <GalleryPic />
             </div>
-            <div className="albums__item__counter">
-              {album.photos?.length} photos
-            </div>
+            {album.photos?.length ? (
+              <div className="albums__item__counter">
+                {album.photos?.length} photos
+              </div>
+            ) : null}
             <div className="albums__item__info card__inner__info">
               {album.title}
             </div>

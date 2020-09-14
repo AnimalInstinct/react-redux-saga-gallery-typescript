@@ -14,9 +14,18 @@ const UserAlbumsListContainer: React.FC<RouteComponentProps> = withRootState(
     const { albumId, userId } = match.params as MatchParams
     useEffect(() => {
       dispatch({ type: 'FETCH_ALBUM_PHOTOS', albumId })
+      dispatch({ type: 'FETCH_USER', userId })
+      dispatch({ type: 'FETCH_ALBUM', albumId })
     }, [])
     const photos = gallery.photos.filter(item => item.albumId == albumId)
-    return <PhotosList photos={photos} userId={userId} />
+    return (
+      <PhotosList
+        photos={photos}
+        userId={userId}
+        user={gallery.user}
+        album={gallery.album}
+      />
+    )
   }
 )
 

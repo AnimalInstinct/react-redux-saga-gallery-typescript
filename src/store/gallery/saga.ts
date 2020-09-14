@@ -12,6 +12,16 @@ export function* saga(): RootMiddleware {
         return dispatch({ type: 'USERS_FETCHED', users })
       }
 
+      case 'FETCH_USER': {
+        const user: User = await api.fetchUser(action.userId)
+        return dispatch({ type: 'USER_FETCHED', user })
+      }
+
+      case 'FETCH_ALBUM': {
+        const album: Album = await api.fetchAlbumInfo(action.albumId)
+        return dispatch({ type: 'ALBUM_FETCHED', album })
+      }
+
       case 'FETCH_USER_ALBUMS': {
         const albums: Album[] = await api.fetchUserAlbums(action.userId)
         return dispatch({

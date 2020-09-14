@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { Photo } from '../../../store/gallery'
+import { User, Album, Photo } from '../../../store/gallery'
 import PhotosItem from './PhotosItem'
 import Modal from '../../Modal'
 import { NavLink } from 'react-router-dom'
@@ -7,9 +7,11 @@ import { NavLink } from 'react-router-dom'
 type PhotosListProps = {
   photos: Photo[]
   userId: number
+  user: User | null
+  album: Album | null
 }
 const AlbumsList: React.FC<PhotosListProps> = (props: PhotosListProps) => {
-  const { photos, userId } = props
+  const { photos, userId, user, album } = props
   const [showModal, setShowModal] = useState<boolean>(false)
   const [currentPhoto, setCurrentPhoto] = useState<number>(0)
   const photoClickedHandler = (photo: Photo) => {
@@ -24,7 +26,8 @@ const AlbumsList: React.FC<PhotosListProps> = (props: PhotosListProps) => {
           {' '}
           &#8592; Back to albums list
         </NavLink>
-        <h1 className="header">Photos</h1>
+        <h1 className="header capitalized">{album && `${album.title}`}</h1>
+        <div className="subheader">{user && `By ${user.name}`}</div>
         <div className="albums">
           {photos.map(photo => (
             <PhotosItem

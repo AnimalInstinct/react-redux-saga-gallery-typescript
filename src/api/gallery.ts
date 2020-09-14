@@ -6,6 +6,18 @@ export const fetchUsers = async () => {
   return users
 }
 
+export const fetchUser = async (userId: number) => {
+  const res = await fetch(`${baseUrl}/users/${userId}`)
+  const user = await res.json()
+  return user
+}
+
+export const fetchAlbumInfo = async (albumId: number) => {
+  const res = await fetch(`${baseUrl}/albums/${albumId}`)
+  const album = await res.json()
+  return album
+}
+
 export const fetchUserAlbums = async (userId: number) => {
   const res = await fetch(`${baseUrl}/albums?userId=${userId}`)
   const albums = await res.json()

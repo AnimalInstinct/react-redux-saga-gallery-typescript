@@ -16,7 +16,17 @@ export type FetchUser = {
 
 export type UserFetched = {
   type: 'USER_FETCHED'
-  users: User
+  user: User
+}
+
+export type FetchAlbum = {
+  type: 'FETCH_ALBUM'
+  albumId: number
+}
+
+export type AlbumFetched = {
+  type: 'ALBUM_FETCHED'
+  album: Album
 }
 
 export type FetchUserAlbums = {
@@ -44,6 +54,10 @@ export type AlbumPhotosFetched = {
 export type GalleryAction =
   | FetchUsers
   | UsersFetched
+  | FetchUser
+  | UserFetched
+  | FetchAlbum
+  | AlbumFetched
   | FetchUserAlbums
   | UserAlbumsFetched
   | FetchAlbumPhotos

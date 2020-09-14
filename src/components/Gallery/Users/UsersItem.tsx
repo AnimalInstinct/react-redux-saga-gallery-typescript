@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { User } from '../../../store/gallery'
 import { NavLink } from 'react-router-dom'
 import { ReactComponent as UserPic } from './img/userpic.svg'
